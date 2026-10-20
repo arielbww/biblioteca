@@ -2,8 +2,10 @@
 import { env } from "cloudflare:workers"; // dá acesso ao banco D1 (env.DB)
 import { httpServerHandler } from "cloudflare:node"; // conecta o Express ao Workers
 import express from "express";
+import cors from "cors";
 
 const app = express();
+app.use(cors()); // logo depois de criar o app, antes do express.json() e das rotas
 app.use(express.json());
 
 // Verifica se a API está no ar
